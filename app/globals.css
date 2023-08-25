@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  margin: 0;
+
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
+  .vr {
+    border-left: 2px solid #cccccc4d;
+    height: 9rem;
+
+
+  }
+
+  .data-style {
+    height: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 4);
+    width: 40px;
+    border-radius: 50%;
+    border: 10px solid hsla(120, 1%, 26%, 0.027);
+    background-color: rgba(169, 169, 169, 0.041);
+
+  }
+  .button{
+    @apply mt-auto p-2 md:text-sm rounded-xl text-xl bg-[#1133f7ea] shadow-sm focus:outline-none focus:ring-2 hover:bg-[#3b57f3] hover:inset-0.5 text-gray-300 font-semibold
+   }
+
+  .svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .Profile {
+    width: 20px;
+    height: 20px;
+
+
+  }
+
+
+ 
+
+
+}
