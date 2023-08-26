@@ -38,9 +38,9 @@ const EshopPlus: React.FC = () => {
           <ProductCard
             key={product.id}
             product={product}
-            addToCart={() => addToCart(product)}
-            removeFromCart={() => removeFromCart(product.id)}
-            isInCart={cart.some((item) => item.id === product.id)}
+            // addToCart={() => addToCart(product)}
+            // removeFromCart={() => removeFromCart(product.id)}
+            // isInCart={cart.some((item) => item.id === product.id)}
           />
         ))}
       </div>

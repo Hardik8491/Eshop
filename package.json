@@ -25,6 +25,7 @@
     "axios": "^1.4.0",
     "currency-formatter": "^1.5.9",
     "dotenv": "^16.3.1",
+    "encoding": "^0.1.13",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "firebase": "^10.1.0",

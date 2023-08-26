@@ -19,26 +19,26 @@ const BestProductsPage = () => {
         Best Products
       </h1>
       <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4  mx-auto">
-        {products
+        {/* {products
           .slice(0, 4)
         .map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            price={product.price}
-            description={product.description}
-            category={product.category}
-            image={product.image}
-          />
-        ))}
+          // <Product
+          //   key={product.id}
+          //   id={product.id}
+          //   title={product.title}
+          //   price={product.price}
+          //   description={product.description}
+          //   category={product.category}
+          //   image={product.image}
+          // />
+        ))} */}
         <img
         src="https://links.papareact.com/dyz"
         alt=""
         className="md:col-span-full "
       />
        <div className="md:col-span-2">
-       {products
+       {/* {products
           .slice(4, 5)
         .map((product) => (
           <Product
@@ -50,9 +50,9 @@ const BestProductsPage = () => {
             category={product.category}
             image={product.image}
           />
-        ))}
+        ))} */}
        </div>
-       {products
+       {/* {products
           .slice(5,products.length)
         .map((product) => (
           <Product
@@ -64,7 +64,7 @@ const BestProductsPage = () => {
             category={product.category}
             image={product.image}
           />
-        ))}
+        ))} */}
       </div>
     </div>
     </div>

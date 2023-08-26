@@ -6,7 +6,7 @@ import { BsCart2 } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BiSolidMap } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
-import Categories from "../ProductCatgory.tsx/Categories";
+
 import Link from 'next/link'
 const MenuBar = () => {
   return (

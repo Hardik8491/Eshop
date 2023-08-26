@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
-import { NextAuthOptions } from "next-auth";
+import {authOptions} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-export const authOptions = {
+export const AuthOptions = {
   // Configure one or more authentication providers
 
   providers: [
@@ -20,3 +20,4 @@ export const authOptions = {
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
+

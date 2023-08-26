@@ -5,7 +5,7 @@ const Min_Rating = 1;
 const Max_Rating = 5;
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../basketSlice";
-import * as CurrencyFormat from "react-currency-format";
+
 
 import { IoIosStarOutline, IoMdStar } from "react-icons/io";
 
@@ -17,7 +17,7 @@ const Product = ({
   description,
   category,
   image,
-  images,
+  // images,
 }: {
   id: string;
   title: string;
@@ -25,8 +25,8 @@ const Product = ({
   description: string;
   category: string;
   image: string;
-  images: string;
-  hashPlus: string;
+  // images: string;
+  hashPlus?: string;
 }) => {
   const [rating] = useState(
     Math.floor(Math.random() * (Max_Rating - Min_Rating + 1)) + Min_Rating
@@ -64,9 +64,8 @@ const Product = ({
         />
       </div>
       <div
-        className="
-            ">
-        <img src={images} alt="" />
+        className="">
+        <img src={image} alt="" />
       </div>
 
       <h4>{title}</h4>
@@ -74,7 +73,7 @@ const Product = ({
         {Array(rating)
           .fill(Number)
           .map((_, i) => (
-            <IoMdStar fill="green" className="shadow-sm " />
+            <IoMdStar fill="green" key={i} className="shadow-sm " />
           ))}
         <h3 className="text-[12px]  font-normal text-blue-800 p-1">
           2,745 rating
@@ -84,12 +83,9 @@ const Product = ({
       <p className="text-xs my-2 line-clamp-2">{description}</p>
       <div className="mb-5">
         <p className="text-gray-700 font-medium ">
-          <CurrencyFormat
-            value={price}
-            displayType={"text"}
-            thousandSeparator={true}
-            prefix={"$"}
-          />
+         ${price}
+         
+        
         </p>
       </div>
 

@@ -1,16 +1,11 @@
-import { useTranslation } from 'next-i18next';
+import React from 'react'
 
-function LanguageSwitcher() {
-  const { i18n } = useTranslation();
-
-  const changeLanguage = (locale) => {
-    i18n.changeLanguage(locale);
-  };
-
+const Language = () => {
   return (
     <div>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('fr')}>Français</button>
+      
     </div>
-  );
+  )
 }
+
+export default Language

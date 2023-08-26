@@ -4,7 +4,7 @@ import { CheckCircle } from "heroicons-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const page = () => {
+const Page = () => {
     const router=useRouter();
   return (
     <div className="bg-gray-100 h-screen text-gray-800">
@@ -17,7 +17,7 @@ const page = () => {
             </h1>
           </div>
           <p className="pb-5">
-            Thank you for shopping with us. we'll send a confirmation item hs,
+            Thank you for shopping with us. we&apos;ll send a confirmation item hs,
             shipped, if you would like to check the status of orders please
             press the link below.
           </p>
@@ -32,4 +32,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

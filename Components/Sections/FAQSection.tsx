@@ -1,5 +1,5 @@
 import React from "react";
-import FAQItem from "../ProductCatgory/FAQSItem";
+import FAQItem from "./FAQSItem";
 
 const faqs = [
   {

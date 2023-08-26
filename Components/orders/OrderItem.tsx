@@ -1,4 +1,4 @@
-import * as CurrencyFormat from "react-currency-format";
+
 import moment from "moment";
 import React from "react";
 
@@ -19,22 +19,22 @@ const OrderItem = (
         <div >
             <p className="text-xs font-bold">TOTAL</p>
             <p>
-                   <CurrencyFormat
+                   {/* <CurrencyFormat
             value={amount}
             displayType={"text"}
             thousandSeparator={true}
             prefix={"$"}
           /> -Next Day Delivery{" "}
-
-
+ */}           {amount}
+  
        
 
-        <CurrencyFormat
+        {/* <CurrencyFormat
             value={amountShipping}
             displayType={"text"}
             thousandSeparator={true}
             prefix={"$"}/>
-         
+          */}
             </p>
         </div>
       </div>

@@ -8,20 +8,20 @@ const stripe = require("stripe")(
 export async function POST(request) {
   try {
     const body = await request.json();
-    console.log(body);
+   ;
     const { items, email } = body;
     const lineItems = items.map((item) => ({
       quantity: 1,
       price_data: {
-        currency: "inr",
-        unit_amount: item.price * 100,
-        product_data: {
-          description: item.description,
-          name: item.title,
-          images: [item.image],
-        },
+          currency: "gbp",
+          unit_amount: item.price * 100,
+          product_data: {
+              name: item.title,
+              description: item.description, //description here
+              images: [item.image],
+          },
       },
-    }));
+  }));
   
 
     const session = await stripe.checkout.sessions.create({

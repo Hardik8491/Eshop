@@ -23,7 +23,7 @@ function BestSellingProducts() {
     <div className="hero bg-gray-100">
       <div className="best-products-page main max-w-screen-2xl mx-auto mt-0 text-gray-700 ">
         <h1>Best Selling Products</h1>
-        <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4  mx-auto" >
+        {/* <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4  mx-auto" >
           {products
             .slice(0, 4)
 
@@ -81,7 +81,7 @@ function BestSellingProducts() {
           />
         ))
       }
-        </div>
+        </div> */}
       </div>
     </div>
   );

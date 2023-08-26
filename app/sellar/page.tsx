@@ -1,10 +1,11 @@
-import BestSeller from '@/Components/ProductCatgory/BestSeller'
+import BestSellingProducts from '@/Components/Sections/BestSeller'
+
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <BestSeller/>
+      <BestSellingProducts/>
     </div>
   )
 }

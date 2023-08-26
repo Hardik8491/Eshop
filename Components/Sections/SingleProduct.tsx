@@ -3,9 +3,16 @@ import React, { useEffect, useState } from "react";
 import { IoMdStar } from "react-icons/io";
 const Min_Rating = 1;
 const Max_Rating = 5;
+type SingleProductType={
+  id:string,
+  title:string
+  price:string,
+  description:string,
+  image:string
 
-const SingleProduct = (onChange) => {
-  const [singleProduct, setSingleProduct] = useState({});
+}
+const SingleProduct = (onChange:any) => {
+  const [singleProduct, setSingleProduct] = useState<SingleProductType | undefined>();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/2")
@@ -17,12 +24,14 @@ const SingleProduct = (onChange) => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  const productId = singleProduct.id;
-  const productName = singleProduct.title || "N/A";
-  const productPrice = singleProduct.price || "N/A";
-  const productDescription = singleProduct.description || "N/A";
 
-  const productIamge = singleProduct.image || "N/A";
+  const productId = singleProduct?.id;
+  const productName = singleProduct?.title || "N/A";
+  const productPrice = singleProduct?.price || "N/A";
+  const productDescription = singleProduct?.description || "N/A";
+
+  const productIamge = singleProduct?.
+  image || "N/A";
   const [rating] = useState(
     Math.floor(Math.random() * (Max_Rating - Min_Rating + 1)) + Min_Rating
   );
@@ -68,8 +77,10 @@ const SingleProduct = (onChange) => {
           <div className="flex items-center ">
             {Array(rating)
               .fill(Number)
-              .map((_, i) => (
-                <IoMdStar fill="green" className="shadow-sm " />
+              
+              .map((_, i,) => (
+              
+                <IoMdStar fill="green" key={i} className="shadow-sm " />
               ))}
             <h3 className="text-[12px]  font-normal text-blue-800 p-1">
               2,745 rating

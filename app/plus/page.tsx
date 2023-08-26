@@ -1,5 +1,5 @@
 
-import EshopPlus from '@/Components/EshopPlus/EPlus'
+import EshopPlus from '@/Components/Sections/EPlus'
 import React from 'react'
 
 const page = () => {

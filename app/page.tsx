@@ -1,8 +1,9 @@
 "use client"
+
+
+
 import Homebar from "@/Components/HomeBar/Homebar";
 
-import SingleProduct from "@/Components/ProductCatgory/SingleProduct";
-import Link from "next/link";
 
 
 export default function Home() {
