@@ -36,8 +36,8 @@ export async function POST(request:any) {
       
 
       mode: "payment",
-      success_url: `http://localhost:3000/success`,
-      cancel_url:`http://localhost:3000/failure`,
+      success_url: `${process.env.HOST}/success`,
+      cancel_url:`${process.env.HOST}/failure`,
       metadata: {
         email,
         images: JSON.stringify(items.map((item:any) => item.image)),
