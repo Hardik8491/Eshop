@@ -17,7 +17,7 @@ export const AuthOptions = {
   
     // ...add more providers here
   ],
-  secret: 'IamVeryHandsome' 
+  SECRET:"LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx6gts="
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
