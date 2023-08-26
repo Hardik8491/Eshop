@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
- import basketReducer from '../eshop/basketSlice';
+ import basketReducer from './basketSlice';
  //ThGlobal Store Setup 
   
 export const store=configureStore({
