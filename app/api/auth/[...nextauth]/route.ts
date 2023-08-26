@@ -17,6 +17,7 @@ export const authOptions = {
   
     // ...add more providers here
   ],
+  secret:'HARDIK8491'
   
 
 };
