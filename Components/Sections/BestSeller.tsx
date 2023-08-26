@@ -48,7 +48,7 @@ function BestSellingProducts() {
               // <p>ID: {product.id}</p>
               // </Product>
             ))}
-          <Image
+          <img
             src="https://links.papareact.com/dyz"
             alt=""
             className="md:col-span-full "

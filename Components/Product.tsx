@@ -93,7 +93,7 @@ const Product = ({
 
       {hashPlus && (
         <div className="flex items-center space-x-2 -mt-5 p-2">
-          <Image
+          <img
             src="https://images-na.ssl-images-amazon.com/images/G/01/dex/2022/Delivery_Choices/091222_DEX_PrimeAmazonDay_LP_Steps_1_Desktop_600x220.jpg"
             alt=""
             className="w-12"

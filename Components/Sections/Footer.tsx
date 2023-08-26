@@ -13,7 +13,7 @@ const Footer = () => {
     <div className="Footer w-full h-32 text-gray-400 bg-gray-950 bottom">
       <div className="bg-[#051d2ef3] flex items-center justify-between p-[2rem]  ">
         <div className="logo flex flex-col items-start ">
-          <Image src="Eshop.png" alt="" className="w-32" />
+          <img src="Eshop.png" alt="" className="w-32" />
           <p className="max-w-sm py-4 ">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet
             dolore vero suscipit ad iusto mollitia in nihil error molestiae
@@ -53,8 +53,8 @@ const Footer = () => {
           <h1 className="mt-5">
             <span className="font-semibold">Download the app: </span>
             <div className="icons flex gap-1 p-1 ">
-              <Image src="play.png"   className="w-24" alt=""  />
-              <Image src="apple.png"  className="w-24" alt="" />
+              <img src="play.png" width={0} height={0}  className="w-24" alt=""  />
+              <img src="apple.png"  className="w-24" alt="" />
             </div>
           </h1>
         </div>

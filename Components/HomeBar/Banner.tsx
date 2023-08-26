@@ -18,9 +18,9 @@ const Banner = () => {
  interval={5000}
  className='cursor-pointer '
  >
-    <div className=""><Image  loading='lazy' src="https://links.papareact.com/gi1" alt="" /></div>
-    <div className=""><Image  loading='lazy' src="https://links.papareact.com/6ff" alt="" /></div>
-    <div className=""><Image  loading='lazy' src="https://links.papareact.com/7ma" alt="" /></div>
+    <div className=""><Image  loading='lazy' src="https://links.papareact.com/gi1"   width={800} height={0} alt="" /></div>
+    <div className=""><Image  loading='lazy' src="https://links.papareact.com/6ff"  width={800} height={0}  alt="" /></div>
+    <div className=""><Image  loading='lazy' src="https://links.papareact.com/7ma"  width={800} height={0} alt="" /></div>
 
  </Carousel>
   </div>

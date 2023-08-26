@@ -34,7 +34,7 @@ const BestProductsPage = () => {
           //   image={product.image}
           // />
         ))} */}
-        <Image
+        <img
         src="https://links.papareact.com/dyz"
         alt=""
         className="md:col-span-full "

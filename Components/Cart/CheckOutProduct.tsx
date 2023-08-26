@@ -80,7 +80,7 @@ function CheckOutProduct({
         </div>
         {hashPlus && (
           <div className="flex items-center space-x-2">
-            <Image 
+            <img
               loading="lazy"
               src="https://images-na.ssl-images-amazon.com/images/G/01/dex/2022/Delivery_Choices/091222_DEX_PrimeAmazonDay_LP_Steps_1_Desktop_600x220.jpg"
               className="w-12"

@@ -45,7 +45,7 @@ const MenuBar = () => {
       <div className="MiddleBar  sm:flex items-center justify-between  mb-[10px] ml-[2rem] mr-[2rem] lg:gap-5 xl:gap-3">
         <div className="leftbar flex items-center justify-center gap-[2rem]">
           <div className="eshop-logo">
-            <Image src="Eshop.png" className="w-auto h-16 cursor-pointer " alt="" />
+            <img src="Eshop.png" className="w-auto h-16 cursor-pointer " alt="" />
           </div>
           <div className="search bar">
             <div className="search-text flex items-center ">
@@ -135,7 +135,7 @@ const MenuBar = () => {
   {/* Mobile Viewers <1080 */}
         <div className="MobileMenuv md:hidden flex items-center justify-between px-5 bg-[#6363611e] border-gray-300 shadow-md border-2 m-1 ">
           <div className="Logo">
-            <Image src="Eshop.png" className="w-[8rem]"  alt="" />
+            <img src="Eshop.png" className="w-[8rem]"  alt="" />
           </div>
           <div className="MIcon bg-white p-1 flex  items-center rounded-sm" >
             <AiOutlineMenu height={40} color="black" className="svg"  
