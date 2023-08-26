@@ -63,10 +63,10 @@ const Product = ({
           width={200}
         />
       </div>
-      <div
+      {/* <div
         className="">
         <Image  src={image} alt="" />
-      </div>
+      </div> */}
 
       <h4>{title}</h4>
       <div className="flex items-center ">
