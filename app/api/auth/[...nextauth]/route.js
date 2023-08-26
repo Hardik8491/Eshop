@@ -14,9 +14,10 @@ export const AuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-
+  
     // ...add more providers here
   ],
+  secret: 'IamVeryHandsome' 
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
