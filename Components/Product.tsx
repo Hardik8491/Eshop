@@ -57,7 +57,7 @@ const Product = ({
       <div className="flex items-center bg-gray-100 justify-center pb-2">
         <Image
           src={image}
-          alt="img"
+          alt="Image "
           objectFit="contain"
           height={200}
           width={200}
@@ -65,7 +65,7 @@ const Product = ({
       </div>
       <div
         className="">
-        <img src={image} alt="" />
+        <Image  src={image} alt="" />
       </div>
 
       <h4>{title}</h4>
@@ -93,7 +93,7 @@ const Product = ({
 
       {hashPlus && (
         <div className="flex items-center space-x-2 -mt-5 p-2">
-          <img
+          <Image
             src="https://images-na.ssl-images-amazon.com/images/G/01/dex/2022/Delivery_Choices/091222_DEX_PrimeAmazonDay_LP_Steps_1_Desktop_600x220.jpg"
             alt=""
             className="w-12"

@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
 import { IoMdStar } from "react-icons/io";
 const Min_Rating = 1;
 const Max_Rating = 5;
@@ -65,7 +67,7 @@ const SingleProduct = (onChange:any) => {
 
       <div className="productSection flex items-start space-x-10 p-10 ">
         <div className="image border-2 border-solid border-black ">
-          <img src={productIamge} width={350} height={400} alt="" />
+          <Image src={productIamge} width={350} height={400} alt="" />
         </div>
         <div className="product_details ">
           <h1 className="text-blue-500 text-xl font-bold py-2">Product</h1>
@@ -118,7 +120,7 @@ const SingleProduct = (onChange:any) => {
             </div>
            
             <p>
-              <img src="card.png"  height={30} alt="" />
+              <Image src="card.png"  height={30} alt="" />
             </p>
             
       

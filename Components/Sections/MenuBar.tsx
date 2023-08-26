@@ -5,9 +5,11 @@ import { LuBellDot } from "react-icons/lu";
 import { BsCart2 } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BiSolidMap } from "react-icons/bi";
+
 import { AiOutlineMenu } from "react-icons/ai";
 
 import Link from 'next/link'
+import Image from "next/image";
 const MenuBar = () => {
   return (
     <div className=" m-0 p-0  text-gray-500 font-semibold  ">
@@ -26,7 +28,7 @@ const MenuBar = () => {
             </li>
             <li className="flex items-center justify-between gap-[0.5rem]">
               <div className="icon  ">
-                <img
+                <Image
                   src="usa.png"
                   alt="Flag"
                   className="logo  rounded-full lg:w-[16px]h-[16px] xl:h-[18px] w-[18px]"
@@ -43,7 +45,7 @@ const MenuBar = () => {
       <div className="MiddleBar  sm:flex items-center justify-between  mb-[10px] ml-[2rem] mr-[2rem] lg:gap-5 xl:gap-3">
         <div className="leftbar flex items-center justify-center gap-[2rem]">
           <div className="eshop-logo">
-            <img src="Eshop.png" className="w-auto h-16 cursor-pointer " alt="" />
+            <Image src="Eshop.png" className="w-auto h-16 cursor-pointer " alt="" />
           </div>
           <div className="search bar">
             <div className="search-text flex items-center ">
@@ -82,7 +84,7 @@ const MenuBar = () => {
               <LuBellDot color="black" />
             </li>
             <li>
-              <img
+              <Image
                 src="profile.png"
                 alt=""
                 className=" rounded-full border-solid border-[1px] lg:h-11 w-11  xl:w-12 h-12 border-gray-600"
@@ -133,7 +135,7 @@ const MenuBar = () => {
   {/* Mobile Viewers <1080 */}
         <div className="MobileMenuv md:hidden flex items-center justify-between px-5 bg-[#6363611e] border-gray-300 shadow-md border-2 m-1 ">
           <div className="Logo">
-            <img src="Eshop.png" className="w-[8rem]"  alt="" />
+            <Image src="Eshop.png" className="w-[8rem]"  alt="" />
           </div>
           <div className="MIcon bg-white p-1 flex  items-center rounded-sm" >
             <AiOutlineMenu height={40} color="black" className="svg"  

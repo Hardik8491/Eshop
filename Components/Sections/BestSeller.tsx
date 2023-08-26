@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Product from "../Product";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -42,12 +43,12 @@ function BestSellingProducts() {
                 // category={product.category}
                 // image={product.image}
               />
-              // <img src={product.image} alt={product.name} />
+              // <Image src={product.image} alt={product.name} />
               // <p>{product.name}</p>
               // <p>ID: {product.id}</p>
               // </Product>
             ))}
-          <img
+          <Image
             src="https://links.papareact.com/dyz"
             alt=""
             className="md:col-span-full "

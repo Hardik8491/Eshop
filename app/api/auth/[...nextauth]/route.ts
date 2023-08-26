@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-export const AuthOptions = {
+export const authOptions = {
   // Configure one or more authentication providers
 
   providers: [
@@ -17,9 +17,27 @@ export const AuthOptions = {
   
     // ...add more providers here
   ],
-   secret:process.env.NEXT_AUTH_SECRET
+  
 
 };
-const handler = NextAuth(AuthOptions);
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
 
+
+
+
+// import NextAuth from "next-auth"
+// import GoogleProvider from "next-auth/providers/google";
+// import GithubProvider from "next-auth/providers/github"
+
+// export default NextAuth({
+//   // Configure one or more authentication providers
+//   providers: [
+  
+//     GithubProvider({
+//       clientId: "d25b6868e41201aedd50",
+//      clientSecret:"e76f0cdc68c6ef83c0ba7a7b5d63fc659bc2797a",
+//     }),
+//     // ...add more providers here
+//   ],
+// })

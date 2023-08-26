@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillAccountBook } from "react-icons/ai"; 
+import Image from "next/image";
 import {MdOutlinePersonPin,MdCategory} from 'react-icons/md'
 
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
@@ -10,7 +11,7 @@ const AboutSection = () => {
        <div className="left md:w-[50%]  md:justify-around mt-10 flex  items-center md:flex  relative left-[1rem] ">
         <div className="about  md:items-center left-14 space-x-3  ">
           <div className="icon p-1 ">
-            <img src="Eshop.png " className="w-[15rem] bg- to-black" alt="" />
+            <Image src="Eshop.png " className="w-[15rem] bg- to-black" alt="" />
           </div>
           <div className="about-section ">
             <h1 className="font-extrabold text-[3rem] md:w-[50rem] p-1">
@@ -57,7 +58,7 @@ const AboutSection = () => {
       </div>
      
       <div className="right md:w-[50%] right-0 flex items-center ">
-        <img src="ani.png" alt="" />
+        <Image  src="ani.png" alt="" />
       </div>
       
     

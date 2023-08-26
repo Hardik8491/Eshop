@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface Product {
@@ -22,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
-      <img
+      <Image
         src={product.imageUrl}
         alt={product.name}
         className="w-full h-40 object-cover mb-2"

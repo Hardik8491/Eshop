@@ -23,6 +23,8 @@ function CheckOutProduct({
 }) {
   const dispatch = useDispatch();
 
+  <CheckOutProduct id={"string"} title={"string"} price={0} rating={"string"} description={"string"} category={"string"} image={"string"} hashPlus={"string"}/>
+
   const addItemToBasket = () => {
     const product = {
       id,
@@ -33,7 +35,6 @@ function CheckOutProduct({
       image,
       hashPlus,
     };
-
     dispatch(addToBasket(product));
   };
 
@@ -79,7 +80,7 @@ function CheckOutProduct({
         </div>
         {hashPlus && (
           <div className="flex items-center space-x-2">
-            <img
+            <Image 
               loading="lazy"
               src="https://images-na.ssl-images-amazon.com/images/G/01/dex/2022/Delivery_Choices/091222_DEX_PrimeAmazonDay_LP_Steps_1_Desktop_600x220.jpg"
               className="w-12"

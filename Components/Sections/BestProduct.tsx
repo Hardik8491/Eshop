@@ -1,6 +1,8 @@
 'use client'
 import React, { useState, useEffect } from "react";
+
 import Product from "../Product"; // Import the Product component
+import Image from "next/image";
 
 const BestProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -32,7 +34,7 @@ const BestProductsPage = () => {
           //   image={product.image}
           // />
         ))} */}
-        <img
+        <Image
         src="https://links.papareact.com/dyz"
         alt=""
         className="md:col-span-full "

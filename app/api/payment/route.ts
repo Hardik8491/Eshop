@@ -5,12 +5,12 @@ const stripe = require("stripe")(
 
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export async function POST(request) {
+export async function POST(request:any) {
   try {
     const body = await request.json();
    ;
     const { items, email } = body;
-    const lineItems = items.map((item) => ({
+    const lineItems = items.map((item:any) => ({
       quantity: 1,
       price_data: {
           currency: "gbp",
@@ -40,7 +40,7 @@ export async function POST(request) {
       cancel_url:`http://localhost:3000/failure`,
       metadata: {
         email,
-        images: JSON.stringify(items.map((item) => item.image)),
+        images: JSON.stringify(items.map((item:any) => item.image)),
       },
     });
 

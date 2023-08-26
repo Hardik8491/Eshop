@@ -1,5 +1,6 @@
 import React from "react";
 import Product from "./Product";
+import Image from "next/image";
 
 const ProductFeed = ({ products }:{products:any}) => {
   return (
@@ -33,7 +34,7 @@ const ProductFeed = ({ products }:{products:any}) => {
             />
           )
         )}
-      <img
+      <Image
         src="https://links.papareact.com/dyz"
         alt=""
         className="md:col-span-full"
