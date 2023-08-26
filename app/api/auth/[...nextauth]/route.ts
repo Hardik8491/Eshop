@@ -8,24 +8,19 @@ export const authOptions = {
   providers: [
     GithubProvider({
       clientId: "d25b6868e41201aedd50",
-      clientSecret:"e76f0cdc68c6ef83c0ba7a7b5d63fc659bc2797a",
+      clientSecret: "e76f0cdc68c6ef83c0ba7a7b5d63fc659bc2797a",
     }),
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID,
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // }),
-  
+
     // ...add more providers here
   ],
-  secret:'HARDIK8491'
-  
-
+  secret: "HARDIK8491",
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
-
-
-
 
 // import NextAuth from "next-auth"
 // import GoogleProvider from "next-auth/providers/google";
@@ -34,7 +29,7 @@ export { handler as GET, handler as POST };
 // export default NextAuth({
 //   // Configure one or more authentication providers
 //   providers: [
-  
+
 //     GithubProvider({
 //       clientId: "d25b6868e41201aedd50",
 //      clientSecret:"e76f0cdc68c6ef83c0ba7a7b5d63fc659bc2797a",
