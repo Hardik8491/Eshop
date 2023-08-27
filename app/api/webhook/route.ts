@@ -1,8 +1,8 @@
 // pages/api/webhooks.ts
-import { NextApiRequest, NextApiResponse } from "next";
+// import { NextApiRequest, NextApiResponse } from "next";
 import { Stripe } from "stripe";
 import { headers } from "next/headers";
-import getRawBody from 'raw-body'
+// import getRawBody from 'raw-body'
 // import { buffer } from "micro";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -19,7 +19,7 @@ const fulfillOrder = async (session:any)=>{
 export async function POST(request: any) {
   const signature = headers().get("Stripe-Signature") ?? "";
   // const rawBody= await getRawBody(request);
-   const body= await request.text(); 
+  //  const body= await request.text(); 
    
     const stripePayload = (request as any).rawBody || request.body;                                                                                                                                                             
  
@@ -43,8 +43,9 @@ export async function POST(request: any) {
     const session = event.data.object;
   }
 }
-export const config={
-  api:{
-    bodyParser:false,
-  },
-}
+// export const config={
+//   api:{
+//     bodyParser:false,
+//     externalResolver:true
+//   },
+// }
