@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-const stripe = require("stripe")(
-  "sk_test_51NNGilSCNlaf5syugoxtZReJSAEYU1JIHZhAbQA8dtQfwXGENlz1vZSj7jZoTzlyWC7aaANOmfpxc9SkNDSDxm0s003tghmVjJ"
-);
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+var getRawBody = require("raw-body");
+const endpointSecret =
+  "whsec_00eff49e647740b929bca4751d8712ad08d6285bf6f123b24c48e0fd6c2cca66";
+
+  
 
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -19,6 +24,7 @@ export async function POST(request:any) {
               name: item.title,
               description: item.description, //description here
               images: [item.image],
+              metadata: { productId: item.product },
           },
       },
   }));

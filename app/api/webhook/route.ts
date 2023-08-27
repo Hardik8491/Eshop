@@ -1,56 +1,35 @@
-import Stripe from "stripe";
-import {buffer } from 'micro'
+// pages/api/webhooks.ts
+import { NextApiRequest, NextApiResponse } from "next";
+import { Stripe } from "stripe";
+import { headers } from "next/headers";
+import { buffer } from "micro";
+import getRawBody from "raw-body";
 import { NextRequest, NextResponse } from "next/server";
-import { NextApiRequest } from "next";
 
-
-const stripe = new Stripe("sk_test_51NNGilSCNlaf5syugoxtZReJSAEYU1JIHZhAbQA8dtQfwXGENlz1vZSj7jZoTzlyWC7aaANOmfpxc9SkNDSDxm0s003tghmVjJ", {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-11-15",
 });
 
-const webhookSecret = process.env.STRIPE_SIGNING_SECRET;
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-
-export async function POST(req:any) {
-  const buf =  await buffer(req);
-  const payload = buf.toString();
-  const sig = req.headers["stripe-signature"];
-  let event;
+export async function POST(request: any) {
   
-  console.log(req, buf);
 
-  // req=await req.json()
-  // const buf = await buffer(req);
+ 
+  const signature = headers().get("Stripe-Signature") ?? "";
 
-
-
+  // const buf = await buffer(request);
+  const payload = await request.json();
+  console.log(request);
+  
+  const STRIPE_SIGNING_SECRET =
+    "whsec_00eff49e647740b929bca4751d8712ad08d6285bf6f123b24c48e0fd6c2cca66";
+  let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(buf, sig,webhookSecret!);
-  } catch (err: any) {
-    console.error(`Webhook signature verification failed: ${err.message}`);
-    // return res
-    //   .status(400)
-    //   .send(`Webhook signature verification failed: ${err.message}`);
-    return new NextResponse("WEBhook signature failsed", { status: 400 });
+    event = stripe.webhooks.constructEvent(
+      payload,
+      signature,
+      STRIPE_SIGNING_SECRET
+    );
+  } catch (err:any) {
+    return new NextResponse(err, { status: 500 });
   }
-
-  switch (event.type) {
-    case "checkout.session.completed":
-      const session = event.data.object;
-
-      // Handle post-payment actions here
-      break;
-
-    // Add other event types to handle as needed
-
-    default:
-      console.warn(`Unhandled event type: ${event.type}`);
-  }
-
-  return new NextResponse("OK", { status: 200 });
 }
