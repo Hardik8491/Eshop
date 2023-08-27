@@ -1,24 +1,21 @@
-
 import * as admin from "firebase-admin";
 import { buffer } from "micro";
 
 import { NextRequest, NextResponse } from "next/server";
-
 
 const serviceAccount = require("../../../permissions.json");
 admin.initializeApp();
 const app = !admin.app.length
   ? admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "database_url"
+      databaseURL: "database_url",
     })
   : admin.app();
 
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const endpointSecret ="whsec_UPkg9LLymSKKzFC7J6ywpGnu6URnuxkZ";
+const endpointSecret ="whsec_UPkg9LLymSKKzFC7J6ywpGnu6URnuxkZ"
 
-const fulfillOrder = async (session:any) => {
+const fulfillOrder = async (session: any) => {
   console.log(session);
   console.log("web hook working,Fulfill order ");
   return app
@@ -88,31 +85,23 @@ const fulfillOrder = async (session:any) => {
 // //   },
 // // };
 
-
-export async function POST(req:any)
-{
+export async function POST(req: any) {
   const requestBuffer = await buffer(req);
   const payload = requestBuffer.toString();
   const sig = req.headers.get("stripe-signature");
   let event;
-  
-    try {
-      event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
-    
- 
-    } catch (error:any) {
-      console.log("ERROR", error.message);
-      // return res.status(400).send(`Webhook error: ${err.message}`);
-      return new Error(`Webhook error:${error}`)
-    }
-    //handle checkout
-    console.log("webhook is ghaitiya line no:72");
-    if (event.type === "checkout.session.completed") {
-      const session = event.date.object;
-      //Fulfill the order
-      await fulfillOrder(session)
-      return new NextResponse("Success",{status:200})
-    }
+
+  try {
+    event = await stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+  } catch (error: any) {
+    console.log("ERROR", error.message);
+    return new Error(`Webhook error:${error}`);
   }
-
-
+  //handle checkout
+  console.log("webhook is ghaitiya line no:72");
+  if (event.type === "checkout.session.completed") {
+    const session = event.date.object;
+    await fulfillOrder(session);
+    return new NextResponse("Success", { status: 200 });
+  }
+}
