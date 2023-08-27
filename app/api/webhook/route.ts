@@ -10,16 +10,18 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-11-15",
 });
 
+const fulfillOrder = async (session:any)=>{
+  console.log(session);
+
+}
+
 export async function POST(request: any) {
-  
-
- 
   const signature = headers().get("Stripe-Signature") ?? "";
-
+   const body=request.json();
   // const buf = await buffer(request);
-  const payload = await request.json();
-  console.log(request);
-  
+  const payload = JSON.stringify(body);
+  console.log(payload);
+
   const STRIPE_SIGNING_SECRET =
     "whsec_00eff49e647740b929bca4751d8712ad08d6285bf6f123b24c48e0fd6c2cca66";
   let event: Stripe.Event;
@@ -29,7 +31,10 @@ export async function POST(request: any) {
       signature,
       STRIPE_SIGNING_SECRET
     );
-  } catch (err:any) {
+  } catch (err: any) {
     return new NextResponse(err, { status: 500 });
+  }
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
   }
 }
