@@ -13,28 +13,28 @@ const app = !admin.app.length
   : admin.app();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const endpointSecret ="whsec_UPkg9LLymSKKzFC7J6ywpGnu6URnuxkZ"
+const endpointSecret = "whsec_UPkg9LLymSKKzFC7J6ywpGnu6URnuxkZ";
 
-const fulfillOrder = async (session: any) => {
-  console.log(session);
-  console.log("web hook working,Fulfill order ");
-  return app
-    .firestore()
-    .collection("users")
-    .doc(session.metadata.email)
-    .collection("orders")
-    .doc(session.id)
-    .set({
-      amount: session.amount_total / 100,
-      amount_shipping: session.total_details.amount_shipping / 100,
-      images: JSON.parse(session.metadata.images),
-      timestamp: admin.firestore.FieldValue.serverTimestamp(),
-    })
-    .then(() => {
-      console.log(`SUCCESS: Order ${session.id} had been added to the  DB`);
-      console.log("error is definee");
-    });
-};
+// const fulfillOrder = async (session: any) => {
+//   console.log(session);
+//   console.log("web hook working,Fulfill order ");
+//   return app
+//     .firestore()
+//     .collection("users")
+//     .doc(session.metadata.email)
+//     .collection("orders")
+//     .doc(session.id)
+//     .set({
+//       amount: session.amount_total / 100,
+//       amount_shipping: session.total_details.amount_shipping / 100,
+//       images: JSON.parse(session.metadata.images),
+//       timestamp: admin.firestore.FieldValue.serverTimestamp(),
+//     })
+//     .then(() => {
+//       console.log(`SUCCESS: Order ${session.id} had been added to the  DB`);
+//       console.log("error is definee");
+//     });
+// };
 // // // export default async (req, res) => {
 // //   if (req.method === "POST") {
 // //     const requestBuffer = await buffer(req);
@@ -101,7 +101,6 @@ export async function POST(req: any) {
   console.log("webhook is ghaitiya line no:72");
   if (event.type === "checkout.session.completed") {
     const session = event.date.object;
-    await fulfillOrder(session);
-    return new NextResponse("Success", { status: 200 });
   }
+  return new NextResponse("Success", { status: 200 });
 }
