@@ -27,7 +27,7 @@ console.log(payload)
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(
-      payload,
+      request,
       signature,
       STRIPE_SIGNING_SECRET
     );
