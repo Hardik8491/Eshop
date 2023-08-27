@@ -17,9 +17,9 @@ const fulfillOrder = async (session:any)=>{
 
 export async function POST(request: any) {
   const signature = headers().get("Stripe-Signature") ?? "";
-   const body= await request.json();
-  // const buf = await buffer(request);
-  const payload = JSON.stringify(body);
+  //  const body= await request.json();
+  const buf = await buffer(request);
+  const payload = buf.toString();
 console.log(payload)
 
   const STRIPE_SIGNING_SECRET =
