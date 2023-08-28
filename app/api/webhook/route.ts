@@ -47,8 +47,9 @@ export async function POST(request: any) {
     console.log(event);
     return NextResponse.json({ message: "This Worked",success:true });
   } catch (err: any) {
-    // return new NextResponse(err, { status: 500 });
-    return NextResponse.json({ message: "This not working", success: false });
+    return new NextResponse(err, { status: 500 });
+    
+    console.log(err);
   }
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
