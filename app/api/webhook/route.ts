@@ -2,6 +2,9 @@
 // import { NextApiRequest, NextApiResponse } from "next";
 import { Stripe } from "stripe";
 import { headers } from "next/headers";
+ const { Readable } = require('stream');
+      const readableStream = new Readable();
+
 // import getRawBody from 'raw-body'
 // import { buffer } from "micro";
 
@@ -19,11 +22,11 @@ const fulfillOrder = async (session:any)=>{
 export async function POST(request: any) {
   const signature = headers().get("Stripe-Signature") ?? "";
   // const rawBody= await getRawBody(request);
-  //  const body= await request.text(); 
+   const body= await request.text(); 
    
-    const stripePayload = (request as any).rawBody || request.body;                                                                                                                                                             
+    // const stripePayload = (request as any).rawBody || request.body;                                                                                                                                                             
  
-  // console.log(rawBody);
+   console.log(body);
 
 
   const STRIPE_SIGNING_SECRET =
@@ -31,7 +34,7 @@ export async function POST(request: any) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(
-      stripePayload,
+      body,
       signature,
       STRIPE_SIGNING_SECRET
     );
