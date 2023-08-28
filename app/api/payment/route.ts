@@ -15,7 +15,7 @@ export async function POST(request:any) {
     const body = await request.json();
    ;
     const { items, email } = body;
-    const lineItems = items.map((item:any) => ({
+    const listLineItems = items.map((item:any) => ({
       quantity: 1,
       price_data: {
           currency: "gbp",
@@ -32,7 +32,7 @@ export async function POST(request:any) {
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items:lineItems,
+      line_items:listLineItems,
      
 
       shipping_address_collection: {

@@ -1,58 +1,49 @@
-import getSession from "@/app/actions/getSession";
 import { useSession } from "next-auth/react";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
-import React from "react";
-import { AiOutlineZoomOut } from "react-icons/ai";
-import moment from "moment";
-
-import { timeStamp } from "console";
-import { database } from "../../firebase.js";
-
+import getSession from "@/app/actions/getSession";
 import OrderItem from "./OrderItem";
+import moment from "moment";
+import db from "@/firebase";
 
-export default async function OrderCard() {
-  const session:any = await getSession();
+export default async function Order(items: any) {
+  const session: any = await getSession();
 
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+  const stripeOrders = await db
+    .collection("users")
+    .doc(session.user.email)
+    .collection("orders")
+    .orderBy("timestamp", "desc")
+    .get();
 
-  // const stripeOrder = await database
-  //   .collection("users")
-  //   .doc(session.user.email)
-  //   .collection("order")
-  //   .orderBy("timestamp", "desc")
-  //   .get();
-  // console.log(stripeOrder.docs);
+  const orders = await Promise.all(
+    stripeOrders.docs.map(async (order: any) => ({
+      id: order.id,
+      amount: order.data().amount,
+      amountShipping: order.data().amount_shipping,
+      images: order.data().image,
+      timestamp: moment(order.data().timestamp.toDate()).unix(),
 
-  // const order = await Promise.all(
-  //   stripeOrder.docs.map(async (order: any) => ({
-  //     id: order.id,
-  //     amount: order.data.amount,
-  //     amountShipping: order.date().amountShipping,
-  //     images: order.date().images,
-  //     timestamp: moment(order.date().timestamp.toData()).unix(),
-  //     items: (
-  //       await stripe.checkout.session.listLineItems(order.id, {
-  //         limit: 100,
-  //       })
-  //     ).date,
-  //   }))
+      items: (
+        await stripe.checkout.sessions.listLineItems(order.id, {
+          limit: 100,
+        })
+      ).data,
+        // cs_xxxx
+    }))
+  );
 
-  // );
-
-  
   return (
-    <div>
-      <main className="max-w-screen-lg mx-auto p-10">
-        <h1 className="text-3xl border-b mb-2 pb-1 border-blue-400">
+    <div className="bg-gray-100 text-gray-800">
+      <main className="max-w-screen-lg mx-auto p-10 ">
+        <h1 className="text-3xl border-b mb-2 pb-1 border-blue-500 ">
           Your Orders
         </h1>
         {session ? (
-          <h2>x Order</h2>
+          <h2> {orders.length} Orders</h2>
         ) : (
-          <h2> Please sign in to see your orders</h2>
+          <h2>Please Sign in to she your order</h2>
         )}
-
-        {/* <div className="mt-5 space-y-4">
+        <div className="mt-5 space-y-4">
           {orders?.map(
             ({
               id,
@@ -80,16 +71,8 @@ export default async function OrderCard() {
               />
             )
           )}
-         </div> */}
+        </div>
       </main>
     </div>
   );
 }
-
-// export async function GetServerSideProps(context: any) {
-//   return {
-//     props: {
-//       order,
-//     },
-//   };
-// }
