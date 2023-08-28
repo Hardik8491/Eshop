@@ -17,12 +17,12 @@ const fulfillOrder = async (session: any) => {
   console.log(session);
 };
 
-export const config = {
-  api: {
-    bodyParser: false,
-    externalResolver: true,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//     externalResolver: true,
+//   },
+// };
 
 export async function POST(request: any) {
   const signature = headers().get("Stripe-Signature") ?? "";
