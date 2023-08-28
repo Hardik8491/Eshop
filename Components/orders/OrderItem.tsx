@@ -47,9 +47,9 @@ const OrderItem = ({
       <div className="p-5 sm:p-10">
         <div className="flex space-x-6 overflow-x-auto">
         
-          {images.map((image:any) => (
+          {/* {images.map((image:any) => (
             <img src={image} key={0} alt="" className="h-20 object-contain sm:h-32" />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
