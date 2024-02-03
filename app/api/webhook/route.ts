@@ -1,6 +1,7 @@
 import { Stripe } from "stripe";
 import { headers } from "next/headers";
 import * as admin from "firebase-admin";
+import getRawBody from "raw-body";
 
 import { buffer } from "micro";
 
@@ -46,11 +47,13 @@ const fulfillOrder = async (session: any) => {
 
 export async function POST(request: any, response: any) {
   // if(request===POST){
-  const signature = request.headers["stripe-signature"];
 
-  // const body = await request.text();
+  const signature = headers().get("Stripe-Signature") ?? "";
 
-  const stripePayload = (request as any).rawBody || request.body;
+  const body = await request.text();
+  const rawBody = await getRawBody(request);
+
+  // const stripePayload = (request as any).rawBody || request.body;
 
   const STRIPE_SIGNING_SECRET = process.env.STRIPE_SIGNING_SECRET!;
 
@@ -58,17 +61,14 @@ export async function POST(request: any, response: any) {
 
   try {
     event = stripe.webhooks.constructEvent(
-      stripePayload,
+      rawBody,
       signature,
       STRIPE_SIGNING_SECRET
     );
 
-    return NextResponse.json({ message: "This Worked", success: true });
+    // return NextResponse.json({ message: "This Worked", success: true });
   } catch (err: any) {
-    return (
-      new NextResponse(err, { status: 502 }),
-      console.log("Error for stripe Segnsere :" + err)
-    );
+    return new NextResponse(err, { status: 500 }), console.log(err);
   }
 
   if (event.type === "checkout.session.completed") {
@@ -82,10 +82,7 @@ export async function POST(request: any, response: any) {
         });
       })
       .catch((err) => {
-        return (
-          new NextResponse(err, { status: 501 }),
-          console.log("error fot fuull" + err)
-        );
+        return new NextResponse(err, { status: 500 }), console.log(err);
       });
   }
 }
