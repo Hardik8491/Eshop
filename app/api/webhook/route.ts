@@ -1,7 +1,6 @@
 import { Stripe } from "stripe";
 import { headers } from "next/headers";
 import * as admin from "firebase-admin";
-import getRawBody from "raw-body";
 
 import { buffer } from "micro";
 
@@ -51,7 +50,6 @@ export async function POST(request: any, response: any) {
   const signature = headers().get("Stripe-Signature") ?? "";
 
   const body = await request.text();
-  const rawBody = await getRawBody(request);
 
   // const stripePayload = (request as any).rawBody || request.body;
 
@@ -61,7 +59,7 @@ export async function POST(request: any, response: any) {
 
   try {
     event = stripe.webhooks.constructEvent(
-      rawBody,
+      body,
       signature,
       STRIPE_SIGNING_SECRET
     );
