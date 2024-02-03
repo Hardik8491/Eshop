@@ -64,9 +64,12 @@ export async function POST(request: any, response: any) {
       STRIPE_SIGNING_SECRET
     );
 
-    // return NextResponse.json({ message: "This Worked", success: true });
+    return NextResponse.json({ message: "This Worked", success: true });
   } catch (err: any) {
-    return new NextResponse(err, { status: 500 }), console.log(err);
+    return (
+      new NextResponse(err, { status: 502 }),
+      console.log("Error for stripe Segnsere :" + err)
+    );
   }
 
   if (event.type === "checkout.session.completed") {
@@ -80,7 +83,10 @@ export async function POST(request: any, response: any) {
         });
       })
       .catch((err) => {
-        return new NextResponse(err, { status: 500 }), console.log(err);
+        return (
+          new NextResponse(err, { status: 501 }),
+          console.log("error fot fuull" + err)
+        );
       });
   }
 }
