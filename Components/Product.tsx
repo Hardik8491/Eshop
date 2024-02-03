@@ -49,7 +49,7 @@ const Product = ({
     dispatch(addToBasket(product));
   };
   return (
-    <div className="relative flex  flex-col  m-5 p-10  bg-white z-30  ">
+    <div className="relative flex flex-col  m-5 p-10   bg-white z-30  ">
       <p className="absolute top-3 right-2 text-xl italic text-gray-400">
         {category}
       </p>

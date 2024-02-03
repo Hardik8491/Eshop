@@ -10,7 +10,6 @@ import { request } from "http";
 // admin.initializeApp();
 const serviceAccount = require("../../../permissions.json");
 
-
 const app = !admin.apps.length
   ? admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -73,10 +72,15 @@ export async function POST(request: any, response: any) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     return fulfillOrder(session)
-      .then(() => { NextResponse.json({  status:201, message: "This Worked", success: true });})
-      .catch ((err)=> {
-        return new NextResponse(err, { status: 500 }), console.log(err);
+      .then(() => {
+        NextResponse.json({
+          status: 201,
+          message: "This Worked",
+          success: true,
+        });
       })
-      
+      .catch((err) => {
+        return new NextResponse(err, { status: 500 }), console.log(err);
+      });
   }
 }

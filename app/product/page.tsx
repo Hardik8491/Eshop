@@ -1,14 +1,16 @@
 
 
 import React from 'react'
+import SingleProduct from '../../Components/Sections/SingleProduct'
 
 const page = () => {
   return (
-    <div>
+    <div className='text-gray-800'>
       
- 
-        <h1>hello there not working </h1>
+ <SingleProduct/>
+        
     </div>
+
   )
 }
 

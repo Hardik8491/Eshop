@@ -1,20 +1,37 @@
 "use client";
+import { Share } from "heroicons-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Product from "../Product";
 
 import { IoMdStar } from "react-icons/io";
+import ProductFeed from "../ProductFeed";
 const Min_Rating = 1;
 const Max_Rating = 5;
-type SingleProductType={
-  id:string,
-  title:string
-  price:string,
-  description:string,
-  image:string
+type SingleProductType = {
+  id: string;
+  title: string;
+  price: string;
+  description: string;
+  image: string;
+};
 
+interface Image {
+  src: string;
+  alt: string;
 }
-const SingleProduct = (onChange:any) => {
-  const [singleProduct, setSingleProduct] = useState<SingleProductType | undefined>();
+
+const images: Image[] = [
+  { src: "img1.jpeg", alt: "Image 1" },
+  { src: "img2.jpg", alt: "Image 2" },
+  { src: "img3.jpeg", alt: "Image 3" },
+  { src: "img1.jpeg", alt: "Image 4" },
+];
+const SingleProduct = (onChange: any, products:any ) => {
+  const [singleProduct, setSingleProduct] = useState<
+    SingleProductType | undefined
+  >();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/2")
@@ -27,13 +44,14 @@ const SingleProduct = (onChange:any) => {
       });
   }, []);
 
+
+
   const productId = singleProduct?.id;
   const productName = singleProduct?.title || "N/A";
   const productPrice = singleProduct?.price || "N/A";
   const productDescription = singleProduct?.description || "N/A";
 
-  const productIamge = singleProduct?.
-  image || "N/A";
+  const productIamge = singleProduct?.image || "";
   const [rating] = useState(
     Math.floor(Math.random() * (Max_Rating - Min_Rating + 1)) + Min_Rating
   );
@@ -53,86 +71,100 @@ const SingleProduct = (onChange:any) => {
   };
 
   return (
-    <div className="bg-gray-200 text-gray-800">
-      <div className="category hidden">
-        <h1>Health&Beiutiy / selfr production / subcrioptionn</h1>
+    <div className="h-screen bg-slate-50 ">
+      <div className="Category py-4 px-60 text-xs font-thin">
+        <p>
+          Electronics›Mobiles & Accessories›Smartphones & Basic
+          Mobiles›Smartphones
+        </p>
       </div>
-      <div className="viewCounter hidden">
-        <div className="icon">
-          icon + 15 <h1>peopple see epxpt</h1>
-          <div className="iconlike">223p 23 reverse</div>
+      <div className="product-data flex justify-center gap-[2rem] ">
+        <div className="img_Category">
+          <div className="image-column w-20">
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image.src}
+                alt={image.alt}
+                className=" border border-gray-600 rounded-xl p-1 mb-4 "
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <hr></hr>
+        <div className="main_image">
+          <Share />
+          <img src="mv.jpg" className="w-50 h-100 object-cover " />
+        </div>
+        <div className="product_details">
+          {/* <p>#{productId}</p> */}
+            <p>#cb97c3fe-bb9e-4404-a654-f560f300976</p>
 
-      <div className="productSection flex items-start space-x-10 p-10 ">
-        <div className="image border-2 border-solid border-black ">
-          <Image src={productIamge} width={350} height={400} alt="" />
-        </div>
-        <div className="product_details ">
-          <h1 className="text-blue-500 text-xl font-bold py-2">Product</h1>
-          <p className="text-gray-500 text-xs"> Id:#{productId}</p>
-          <h2 className="pb-1 text-2xl font-bold focus:outline-none">
-            {productName}
+          <h1 className="text-xl font-semibold max-w-sm p-2  ">
+            realme narzo 60 5G (Mars Orange,8GB+128GB) 90Hz Super AMOLED Display
+            | Ultra Premium Vegan Leather Design | with 33W SUPERVOOC Charger
+          </h1>
+          <Link href="www.google.com" className="text-[#007185]">
+            Visit the realme Store
+          </Link>
+
+          <h2 className="text-md font-normal max-w-md p-2 ">
+            Phone Setup Service at the time of delivery. Please select
+            convenient setup slot at checkout if available. Details Brand Realme
+            Model Name Realme narzo 60 5G Network Service Provider Unlocked for
+            All Carriers Operating System Android 13.0 Cellular Technology
           </h2>
-          <h3 className="my-1 text-md  max-w-xl">{productDescription}</h3>
-          <div className="flex items-center ">
-            {Array(rating)
-              .fill(Number)
-              
-              .map((_, i,) => (
-              
-                <IoMdStar fill="green" key={i} className="shadow-sm " />
-              ))}
-            <h3 className="text-[12px]  font-normal text-blue-800 p-1">
-              2,745 rating
-            </h3>
-          </div>
-          <div className="py-4 bg-white w-25 mt-auto w-[15%]  flex  item-center justify-around focus:outline-none focus:ring-2 border-solid border-2 border-gray-300 shadow-md rounded-xl items-center text-center">
-            <button className="focus:outline-none" onClick={handleDecrement}>
-              -
-            </button>
-            <span className="mx-2">{quantity}</span>
-            <button className="focus:outline-none" onClick={handleIncrement}>
-              +
-            </button>
-          </div>
-          <p>colors</p>
-          <p>Price: ${productPrice}</p>
-        </div>
-        <div className="payment-section bg-white border-gray-400 border-solid border-10 p-3 rounded-lg shadow-lg shadow-gray-600  ">
-          <div className="delevr p-4 ">
-            <h3 className="p-2 text-xl font-semibold max-w-xl text-blue-500 border-blue-500 border-4 rounded-md ">
-              Free 2-day Delivery
-            </h3>
-            <p className="bg-gray-200 py-4 mt-2 shadow-md text-center ">this a not for showing the content inside component</p>
-          </div>
-          <div className="address border-gray-300 border-4 rounded-lg top-8 p-4">
-            <h3 className="text-md font-semibold p-3">Free Pickup-Today</h3>
-            <p className="p-3  text-base text-gray-800 font-medium">ub stock at San francisco,123040 Hesperian Biv </p>
-          </div>
-          <div className="pay-method p-4">
-            <div className=" flex items-center justify-between text-base font-medium text-black ">
-            <h1 className="font-medium text-md py-2">Total Amount</h1>
-            <h1>
-              <span className="font-semibold text-lg">79.99$</span>
-            </h1>
-            </div>
-           
-            <p>
-              <Image src="card.png"  height={30} alt="" />
-            </p>
-            
-      
-            
-          </div>
-          <button
-        // onClick()
-        className="mt-auto p-4  md:text-s rounded-xl text-xl bg-[#1133f7ea] shadow-sm focus:outline-none focus:ring-2  text-gray-300 font-semibold top-10 w-full left-3">
-        Add Basket
-      </button>
+          <p> 4.0 4.0 out of 5 stars 1,242 ratings | 201 answered questions</p>
+          <p>Eshop's Choice for "realme"</p>
+          <hr />
+
+          <h2 className="font-medium text-3xl flex gap-2 items-center py-2">
+            <p className="text-red-500">-10%</p>₹17,999
+          </h2>
+          <p className="text-xs font-serif line-through">M.R.P.: ₹19,999</p>
+          <h6 className="p-2">
+            Inclusive of all taxes <br />
+            EMI starts at ₹873.No Cost EMI available EMI options <br /> Coupon:
+            Apply ₹1000 coupon Terms | Shop items
+          </h6>
+
+          <hr></hr>
+          <span className="p-3">
+            <img src="nv.png" alt="" />
+          </span>
+
+          {/*           
+          <h4>{productPrice}</h4> */}
         </div>
       </div>
+      {/* {products.toString()
+        .slice(5, products.length)
+        .map(
+          ({
+            id,
+            title,
+            price,
+            description,
+            category,
+            image,
+          }: {
+            id: string;
+            title: string;
+            price: number;
+            description: string;
+            category: string;
+            image: string;
+          }) => (
+            <Product
+              key={id}
+              id={id}
+              title={title}
+              price={price}
+              description={description}
+              category={category}
+              image={image}
+            />
+          ))} */}
+
     </div>
   );
 };
