@@ -46,12 +46,11 @@ const fulfillOrder = async (session: any) => {
 
 export async function POST(request: any, response: any) {
   // if(request===POST){
+  const signature = request.headers["stripe-signature"];
 
-  const signature = headers().get("Stripe-Signature") ?? "";
+  // const body = await request.text();
 
-  const body = await request.text();
-
-  // const stripePayload = (request as any).rawBody || request.body;
+  const stripePayload = (request as any).rawBody || request.body;
 
   const STRIPE_SIGNING_SECRET = process.env.STRIPE_SIGNING_SECRET!;
 
@@ -59,7 +58,7 @@ export async function POST(request: any, response: any) {
 
   try {
     event = stripe.webhooks.constructEvent(
-      body,
+      stripePayload,
       signature,
       STRIPE_SIGNING_SECRET
     );
